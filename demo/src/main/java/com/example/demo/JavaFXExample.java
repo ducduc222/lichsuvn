@@ -63,7 +63,8 @@ public class JavaFXExample extends Application {
                 root2.setLeft(listView2);
                 TextArea textArea3 = new TextArea();
                 textArea3.setEditable(false);
-                root.setCenter(textArea3);
+                root.setRight(textArea3);
+
                 listView2.getSelectionModel().selectedItemProperty()
                         .addListener((observable2, oldValue2, newValue2) -> {
                             Vua selectedVua = null;
@@ -283,6 +284,11 @@ public class JavaFXExample extends Application {
                                     break;
                                 }
                             }
+
+                            TextArea textnew = new TextArea();
+                            textnew.setEditable(false);
+                            root.setRight(textnew);
+
                             BorderPane root4 = new BorderPane();
                             root3.setCenter(root4);
                             ListView<String> listView3 = new ListView<>();
@@ -385,6 +391,8 @@ public class JavaFXExample extends Application {
                                                     break;
                                                 }
                                             }
+                                            
+
                                             if (selectedVua != null) {
                                                 textArea2.setText(
                                                         "Tên di tích: " + selectedVua.getTen() + "\n\nĐịa điểm: "
