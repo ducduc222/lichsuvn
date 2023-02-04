@@ -15,6 +15,7 @@ import com.example.scraper.ScrapAll;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
@@ -60,11 +61,9 @@ public class JavaFXExample extends Application {
                     listView2.getItems().add(vua.getTen());
                 }
                 root2.setLeft(listView2);
-
-                TextArea textArea2 = new TextArea();
-                textArea2.setEditable(false);
-                root2.setCenter(textArea2);
-
+                TextArea textArea3 = new TextArea();
+                textArea3.setEditable(false);
+                root.setCenter(textArea3);
                 listView2.getSelectionModel().selectedItemProperty()
                         .addListener((observable2, oldValue2, newValue2) -> {
                             Vua selectedVua = null;
@@ -74,9 +73,12 @@ public class JavaFXExample extends Application {
                                     break;
                                 }
                             }
+                            TextArea textArea2 = new TextArea();
+                            textArea2.setEditable(false);
+                            root2.setCenter(textArea2);
                             if (selectedVua != null) {
                                 textArea2.setText(
-                                        "Tên: " + selectedVua.getTen() + "Ngày sinh: " + selectedVua.getNgaysinh()
+                                        "Tên: " + selectedVua.getTen() + "\nNgày sinh: " + selectedVua.getNgaysinh()
                                                 + "\n" + "Ngày mất: " + selectedVua.getNgaymat() + "\n"
                                                 + "Ngày lên ngôi: " + selectedVua.getNgaylenngoi() + "\n" + "Cha: " +
                                                 selectedVua.getCha());
@@ -84,12 +86,6 @@ public class JavaFXExample extends Application {
 
                         });
             }
-
-
-
-
-
-
 
             if (newValue.equals("Danh sách các Triều đại")) {
                 ListView<String> listView2 = new ListView<>();
@@ -103,10 +99,6 @@ public class JavaFXExample extends Application {
 
                 root2.setCenter(root3);
 
-                TextArea textArea2 = new TextArea();
-                textArea2.setEditable(false);
-                root3.setTop(textArea2);
-
                 listView2.getSelectionModel().selectedItemProperty()
                         .addListener((observable2, oldValue2, newValue2) -> {
                             TrieuDai selected = null;
@@ -118,16 +110,22 @@ public class JavaFXExample extends Application {
                             }
 
                             if (selected != null) {
+                                TextArea textArea2 = new TextArea();
+                                textArea2.setEditable(false);
+                                root3.setTop(textArea2);
+
                                 textArea2.setText("Tên: " + selected.getTen());
+
+                                BorderPane root4 = new BorderPane();
+                                Label title = new Label("Danh sách các Vua: ");
+                                root4.setTop(title);
+
                                 ListView<String> listView3 = new ListView<>();
                                 for (Vua vua : selected.getCacVua()) {
                                     listView3.getItems().add(vua.getTen());
                                 }
-                                root3.setCenter(listView3);
-
-                                TextArea textArea3 = new TextArea();
-                                textArea3.setEditable(false);
-                                root.setRight(textArea3);
+                                root4.setCenter(listView3);
+                                root3.setCenter(root4);
 
                                 listView3.getSelectionModel().selectedItemProperty()
                                         .addListener((observable3, oldValue3, newValue3) -> {
@@ -139,8 +137,11 @@ public class JavaFXExample extends Application {
                                                 }
                                             }
                                             if (selectedVua != null) {
+                                                TextArea textArea3 = new TextArea();
+                                                textArea3.setEditable(false);
+                                                root.setRight(textArea3);
                                                 textArea3.setText(
-                                                        "Tên: " + selectedVua.getTen() + "Ngày sinh: "
+                                                        "Tên: " + selectedVua.getTen() + "\nNgày sinh: "
                                                                 + selectedVua.getNgaysinh()
                                                                 + "\n" + "Ngày mất: " + selectedVua.getNgaymat() + "\n"
                                                                 + "Ngày lên ngôi: " + selectedVua.getNgaylenngoi()
@@ -154,28 +155,24 @@ public class JavaFXExample extends Application {
                         });
             }
 
-
-
-
-
-
             if (newValue.equals("Danh sách các Di tích")) {
                 ListView<String> listView2 = new ListView<>();
                 for (DiTich diTich : diTichs) {
                     listView2.getItems().add(diTich.getTen());
                 }
                 root2.setLeft(listView2);
-
-                TextArea textArea2 = new TextArea();
-                textArea2.setEditable(false);
-                root2.setCenter(textArea2);
-
-                TextArea textArea3 = new TextArea();
-                textArea3.setEditable(false);
-                root.setRight(textArea3);
-
+                TextArea textArea4 = new TextArea();
+                textArea4.setEditable(false);
+                root.setRight(textArea4);
                 listView2.getSelectionModel().selectedItemProperty()
                         .addListener((observable2, oldValue2, newValue2) -> {
+                            TextArea textArea2 = new TextArea();
+                            textArea2.setEditable(false);
+                            root2.setCenter(textArea2);
+
+                            TextArea textArea3 = new TextArea();
+                            textArea3.setEditable(false);
+                            root.setRight(textArea3);
                             DiTich selectedVua = null;
                             for (DiTich diTich : diTichs) {
                                 if (diTich.getTen().equals(newValue2)) {
@@ -193,26 +190,25 @@ public class JavaFXExample extends Application {
                         });
             }
 
-
-
             if (newValue.equals("Danh sách các Sự kiện")) {
                 ListView<String> listView2 = new ListView<>();
                 for (SuKien suKien : suKiens) {
                     listView2.getItems().add(suKien.getTen());
                 }
                 root2.setLeft(listView2);
-
+                TextArea textArea4 = new TextArea();
+                textArea4.setEditable(false);
+                root.setRight(textArea4);
                 BorderPane root3 = new BorderPane();
                 root3.setPadding(new Insets(10));
 
                 root2.setCenter(root3);
 
-                TextArea textArea2 = new TextArea();
-                textArea2.setEditable(false);
-                root3.setTop(textArea2);
-
                 listView2.getSelectionModel().selectedItemProperty()
                         .addListener((observable2, oldValue2, newValue2) -> {
+                            TextArea textArea2 = new TextArea();
+                            textArea2.setEditable(false);
+                            root3.setTop(textArea2);
                             SuKien selected = null;
                             for (SuKien suKien : suKiens) {
                                 if (suKien.getTen().equals(newValue2)) {
@@ -223,15 +219,17 @@ public class JavaFXExample extends Application {
 
                             if (selected != null) {
                                 textArea2.setText("Tên: " + selected.getTen());
+
+                                BorderPane root4 = new BorderPane();
+                                Label title = new Label("Danh sách các nhân vật liên quan:");
+                                root4.setTop(title);
+
                                 ListView<String> listView3 = new ListView<>();
                                 for (Vua vua : selected.getVuas()) {
                                     listView3.getItems().add(vua.getTen());
                                 }
-                                root3.setCenter(listView3);
-
-                                TextArea textArea3 = new TextArea();
-                                textArea3.setEditable(false);
-                                root.setRight(textArea3);
+                                root4.setCenter(listView3);
+                                root3.setCenter(root4);
 
                                 listView3.getSelectionModel().selectedItemProperty()
                                         .addListener((observable3, oldValue3, newValue3) -> {
@@ -243,8 +241,11 @@ public class JavaFXExample extends Application {
                                                 }
                                             }
                                             if (selectedVua != null) {
+                                                TextArea textArea3 = new TextArea();
+                                                textArea3.setEditable(false);
+                                                root.setRight(textArea3);
                                                 textArea3.setText(
-                                                        "Tên: " + selectedVua.getTen() + "Ngày sinh: "
+                                                        "Tên: " + selectedVua.getTen() + "\nNgày sinh: "
                                                                 + selectedVua.getNgaysinh()
                                                                 + "\n" + "Ngày mất: " + selectedVua.getNgaymat() + "\n"
                                                                 + "Ngày lên ngôi: " + selectedVua.getNgaylenngoi()
@@ -258,30 +259,151 @@ public class JavaFXExample extends Application {
                         });
             }
 
+            // lễ hội
+            if (newValue.equals("Danh sách các Lễ hội")) {
+                ListView<String> listView2 = new ListView<>();
+                for (LeHoi leHoi : leHois) {
+                    listView2.getItems().add(leHoi.getTen());
+                }
+                root2.setLeft(listView2);
+                TextArea textArea4 = new TextArea();
+                textArea4.setEditable(false);
+                root.setRight(textArea4);
+                BorderPane root3 = new BorderPane();
+                root3.setPadding(new Insets(10));
 
+                root2.setCenter(root3);
 
+                listView2.getSelectionModel().selectedItemProperty()
+                        .addListener((observable2, oldValue2, newValue2) -> {
+                            LeHoi selected = null;
+                            for (LeHoi leHoi : leHois) {
+                                if (leHoi.getTen().equals(newValue2)) {
+                                    selected = leHoi;
+                                    break;
+                                }
+                            }
+                            BorderPane root4 = new BorderPane();
+                            root3.setCenter(root4);
+                            ListView<String> listView3 = new ListView<>();
+                            ListView<String> listView4 = new ListView<>();
+                            ListView<String> listView5 = new ListView<>();
 
+                            if (selected != null) {
+                                TextArea textArea2 = new TextArea();
+                                textArea2.setEditable(false);
+                                root3.setTop(textArea2);
+                                textArea2.setText("Tên: " + selected.getTen() + "\nĐịa điểm: " + selected.getDiadiem()
+                                        + "\nNgày tổ chức: " + selected.getNgaytochuc());
+
+                                BorderPane root5 = new BorderPane();
+                                Label title = new Label("Danh sách các nhân vật liên quan:");
+                                root5.setTop(title);
+
+                                for (Vua vua : selected.getCacvua()) {
+                                    listView3.getItems().add(vua.getTen());
+                                }
+                                root5.setCenter(listView3);
+
+                                root4.setLeft(root5);
+
+                                listView3.getSelectionModel().selectedItemProperty()
+                                        .addListener((observable3, oldValue3, newValue3) -> {
+                                            Vua selectedVua = null;
+                                            for (Vua vua : vuas) {
+                                                if (vua.getTen().equals(newValue3)) {
+                                                    selectedVua = vua;
+                                                    break;
+                                                }
+                                            }
+                                            TextArea textArea3 = new TextArea();
+                                            textArea3.setEditable(false);
+                                            root.setRight(textArea3);
+                                            if (selectedVua != null) {
+                                                textArea3.setText(
+                                                        "Tên: " + selectedVua.getTen() + "\nNgày sinh: "
+                                                                + selectedVua.getNgaysinh()
+                                                                + "\n" + "Ngày mất: " + selectedVua.getNgaymat() + "\n"
+                                                                + "Ngày lên ngôi: " + selectedVua.getNgaylenngoi()
+                                                                + "\n" + "Cha: " +
+                                                                selectedVua.getCha());
+                                            }
+
+                                        });
+
+                                //
+                                BorderPane root6 = new BorderPane();
+                                Label title2 = new Label("Danh sách các Sự kiện liên quan:");
+                                root6.setTop(title2);
+
+                                for (SuKien suKien : selected.getCacsukien()) {
+                                    listView4.getItems().add(suKien.getTen());
+                                }
+                                root6.setCenter(listView4);
+
+                                root4.setCenter(root6);
+
+                                listView4.getSelectionModel().selectedItemProperty()
+                                        .addListener((observable3, oldValue3, newValue3) -> {
+                                            SuKien selectedVua = null;
+                                            for (SuKien suKien : suKiens) {
+                                                if (suKien.getTen().equals(newValue3)) {
+                                                    selectedVua = suKien;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (selectedVua != null) {
+                                                TextArea textArea3 = new TextArea();
+                                                textArea3.setEditable(false);
+                                                root.setRight(textArea3);
+                                                textArea3.setText("Tên: " + selectedVua.getTen());
+                                            }
+
+                                        });
+                                //
+
+                                //
+                                //
+                                BorderPane root7 = new BorderPane();
+                                Label title3 = new Label("Danh sách các Di tích liên quan:");
+                                root7.setTop(title3);
+
+                                for (DiTich diTich : selected.getCacditich()) {
+                                    listView5.getItems().add(diTich.getTen());
+                                }
+                                root7.setCenter(listView5);
+
+                                root4.setRight(root6);
+
+                                listView5.getSelectionModel().selectedItemProperty()
+                                        .addListener((observable3, oldValue3, newValue3) -> {
+                                            DiTich selectedVua = null;
+                                            for (DiTich diTich : diTichs) {
+                                                if (diTich.getTen().equals(newValue3)) {
+                                                    selectedVua = diTich;
+                                                    break;
+                                                }
+                                            }
+                                            if (selectedVua != null) {
+                                                textArea2.setText(
+                                                        "Tên di tích: " + selectedVua.getTen() + "\n\nĐịa điểm: "
+                                                                + selectedVua.getDiadiem()
+                                                                + "\n" + "Loại di tích: "
+                                                                + selectedVua.getLoaiditich());
+                                            }
+
+                                        });
+                                //
+                                //
+
+                            }
+
+                        });
+            }
 
             root.setCenter(root2);
         });
-
-        // listView1.getSelectionModel().selectedItemProperty().addListener((observable,
-        // oldValue, newValue) -> {
-        // Vua selectedVua = null;
-        // for (Vua vua : listLichSu.getVuas()) {
-        // if (vua.getTen().equals(newValue)) {
-        // selectedVua = vua;
-        // break;
-        // }
-        // }
-        // if (selectedVua != null) {
-        // textArea.setText("Ngày sinh: " + selectedVua.getNgaysinh() + "\n" + "Ngày
-        // mất: "
-        // + selectedVua.getNgaymat() + "\n"
-        // + "Ngày lên ngôi: " + selectedVua.getNgaylenngoi() + "\n" + "Cha: " +
-        // selectedVua.getCha());
-        // }
-        // });
 
         stage.setScene(new Scene(root, 600, 400));
         stage.setTitle("Danh sách các vua");
@@ -312,3 +434,4 @@ public class JavaFXExample extends Application {
         private List<LeHoi> leHois = new ArrayList<>();
     }
 }
+
