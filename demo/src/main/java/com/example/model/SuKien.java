@@ -46,4 +46,3 @@ public class SuKien extends General {
     }
 
 }
-

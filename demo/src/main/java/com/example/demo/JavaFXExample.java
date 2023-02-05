@@ -13,8 +13,13 @@ import com.example.model.Vua;
 import com.example.scraper.ScrapAll;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -28,11 +33,16 @@ public class JavaFXExample extends Application {
     private List<LeHoi> leHois;
     private List<DiTich> diTichs;
 
+    volatile boolean shouldStop = false;
+
     // private List<Vua> vuas;
     @Override
     public void start(Stage stage) throws IOException {
+
         ListLichSu listLichSu = new ListLichSu();
-        ScrapAll.scrapAll(listLichSu);
+        String currentDirectory = System.getProperty("user.dir");
+        String nameFile = currentDirectory + "/src/main/java/com/example/lichsu.json";
+        listLichSu = JsonFileParser.parseJsonFile(nameFile);
 
         vuas = listLichSu.getVuas();
         trieuDais = listLichSu.getTrieuDais();
@@ -42,14 +52,56 @@ public class JavaFXExample extends Application {
 
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(10));
+        BorderPane nav = new BorderPane();
+        nav.setMaxWidth(300);
 
+        Button button = new Button("Quét dữ liệu");
+        nav.setBottom(button);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thông báo");
+                alert.setHeaderText("Quét dữ liệu");
+                alert.setContentText("Đang quét dữ liệu...");
+                alert.show();
+
+                new Thread(() -> {
+                    if (!shouldStop) {
+                        try {
+                            ScrapAll.scrapAll();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+
+                    Platform.runLater(() -> alert.close());
+                }).start();
+
+            }
+
+        });
         ListView<String> listView1 = new ListView<>();
         listView1.getItems().add("Danh sách các Vua");
         listView1.getItems().add("Danh sách các Triều đại");
         listView1.getItems().add("Danh sách các Di tích");
         listView1.getItems().add("Danh sách các Sự kiện");
         listView1.getItems().add("Danh sách các Lễ hội");
-        root.setLeft(listView1);
+
+        nav.setTop(listView1);
+
+        TextArea showSize = new TextArea();
+        showSize.setEditable(false);
+
+        nav.setCenter(showSize);
+
+        showSize.setText(
+                "Số Vua, nhân vật lịch sử: " + vuas.size() +
+                        "\nSố triều đại: " + trieuDais.size() +
+                        "\nSố di tích: " + diTichs.size() +
+                        "\nSố sự kiện: " + suKiens.size() +
+                        "\nSố lễ hội: " + leHois.size());
+        root.setLeft(nav);
 
         listView1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             BorderPane root2 = new BorderPane();
@@ -57,7 +109,7 @@ public class JavaFXExample extends Application {
 
             if (newValue.equals("Danh sách các Vua")) {
                 ListView<String> listView2 = new ListView<>();
-                for (Vua vua : listLichSu.getVuas()) {
+                for (Vua vua : vuas) {
                     listView2.getItems().add(vua.getTen());
                 }
                 root2.setLeft(listView2);
@@ -90,7 +142,7 @@ public class JavaFXExample extends Application {
 
             if (newValue.equals("Danh sách các Triều đại")) {
                 ListView<String> listView2 = new ListView<>();
-                for (TrieuDai trieuDai : listLichSu.getTrieuDais()) {
+                for (TrieuDai trieuDai : trieuDais) {
                     listView2.getItems().add(trieuDai.getTen());
                 }
                 root2.setLeft(listView2);
@@ -322,10 +374,11 @@ public class JavaFXExample extends Application {
                                                     break;
                                                 }
                                             }
-                                            TextArea textArea3 = new TextArea();
-                                            textArea3.setEditable(false);
-                                            root.setRight(textArea3);
+
                                             if (selectedVua != null) {
+                                                TextArea textArea3 = new TextArea();
+                                                textArea3.setEditable(false);
+                                                root.setRight(textArea3);
                                                 textArea3.setText(
                                                         "Tên: " + selectedVua.getTen() + "\nNgày sinh: "
                                                                 + selectedVua.getNgaysinh()
@@ -347,7 +400,7 @@ public class JavaFXExample extends Application {
                                 }
                                 root6.setCenter(listView4);
 
-                                root4.setCenter(root6);
+                                root4.setRight(root6);
 
                                 listView4.getSelectionModel().selectedItemProperty()
                                         .addListener((observable3, oldValue3, newValue3) -> {
@@ -380,7 +433,7 @@ public class JavaFXExample extends Application {
                                 }
                                 root7.setCenter(listView5);
 
-                                root4.setRight(root6);
+                                root4.setCenter(root7);
 
                                 listView5.getSelectionModel().selectedItemProperty()
                                         .addListener((observable3, oldValue3, newValue3) -> {
@@ -391,10 +444,12 @@ public class JavaFXExample extends Application {
                                                     break;
                                                 }
                                             }
-                                            
-
                                             if (selectedVua != null) {
-                                                textArea2.setText(
+
+                                                TextArea textArea3 = new TextArea();
+                                                textArea3.setEditable(false);
+                                                root.setRight(textArea3);
+                                                textArea3.setText(
                                                         "Tên di tích: " + selectedVua.getTen() + "\n\nĐịa điểm: "
                                                                 + selectedVua.getDiadiem()
                                                                 + "\n" + "Loại di tích: "
@@ -413,7 +468,7 @@ public class JavaFXExample extends Application {
             root.setCenter(root2);
         });
 
-        stage.setScene(new Scene(root, 600, 400));
+        stage.setScene(new Scene(root, 1200, 800));
         stage.setTitle("Danh sách các vua");
         stage.show();
     }
@@ -442,4 +497,3 @@ public class JavaFXExample extends Application {
         private List<LeHoi> leHois = new ArrayList<>();
     }
 }
-

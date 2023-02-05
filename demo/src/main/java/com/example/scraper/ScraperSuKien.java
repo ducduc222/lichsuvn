@@ -18,7 +18,8 @@ import java.io.IOException;
 public class ScraperSuKien {
     public static void scraperSukien(ListLichSu listLichSu) throws IOException {
 
-        System.setProperty("webdriver.chrome.driver", "src/chromedriver");
+        System.setProperty("webdriver.chrome.driver", LinkScraper.linkChrome);
+        // System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
 

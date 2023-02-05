@@ -17,7 +17,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ScraperLeHoi {
     public static void scraperLeHoi(ListLichSu listLichSu) throws IOException {
-        System.setProperty("webdriver.chrome.driver", "src/chromedriver");
+        System.setProperty("webdriver.chrome.driver", LinkScraper.linkChrome);
+        // System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
 

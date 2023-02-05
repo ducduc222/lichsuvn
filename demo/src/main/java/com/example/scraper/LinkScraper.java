@@ -8,5 +8,6 @@ public class LinkScraper {
     public static String linkSuKien = "https://www.wikiwand.com/vi/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
     public static String linkLeHoi = "https://www.wikiwand.com/vi/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam";
     public static String linkDiTich = "https://www.wikiwand.com/vi/Danh_s%C3%A1ch_Di_t%C3%ADch_qu%E1%BB%91c_gia_Vi%E1%BB%87t_Nam";
-
+    // public static String linkChrome = "src/chromedriver";
+    public static String linkChrome = "src/chromedriver.exe";
 }

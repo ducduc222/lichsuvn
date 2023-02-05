@@ -37,8 +37,6 @@ public class ScraperVua {
                 Vua vua = new Vua(name, ngaysinh, ngaymat, ngaylenngoi, cha);
                 listLichSu.addGeneral(vua);
                 MapClass.setMap(linkVua, vua);
-                System.out.println(vua.getTen());
-
                 } catch (Exception e) {
 
                 }
@@ -48,10 +46,11 @@ public class ScraperVua {
 
             // scrap anh hùng dân tộc
             System.setProperty("webdriver.chrome.driver", "src/chromedriver");
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless");
+            // System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--headless");
 
-            WebDriver driver = new ChromeDriver(options);
+            WebDriver driver = new ChromeDriver(chromeOptions);
             WebDriverWait wait = new WebDriverWait(driver, 60);
             driver.get(LinkScraper.linkAnhHungDanToc);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("Đặc_điểm")));

@@ -53,4 +53,24 @@ public class ListLichSu {
 
         return true;
     }
+
+    public void setVuas(ArrayList<Vua> vuas) {
+        this.vuas = vuas;
+    }
+
+    public void setSuKiens(ArrayList<SuKien> suKiens) {
+        this.suKiens = suKiens;
+    }
+
+    public void setTrieuDais(ArrayList<TrieuDai> trieuDais) {
+        this.trieuDais = trieuDais;
+    }
+
+    public void setLeHois(ArrayList<LeHoi> leHois) {
+        this.leHois = leHois;
+    }
+
+    public void setDiTichs(ArrayList<DiTich> diTichs) {
+        this.diTichs = diTichs;
+    }
 }
