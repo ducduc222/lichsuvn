@@ -45,7 +45,7 @@ public class ScraperVua {
 
 
             // scrap anh hùng dân tộc
-            System.setProperty("webdriver.chrome.driver", "src/chromedriver");
+            System.setProperty("webdriver.chrome.driver", LinkScraper.linkChrome);
             // System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--headless");
