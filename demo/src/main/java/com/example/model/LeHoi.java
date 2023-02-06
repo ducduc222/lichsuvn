@@ -88,4 +88,11 @@ public class LeHoi extends General {
         this.addSuKien(suKien);
     }
 
+    public ArrayList<SuKien> getCacsukien() {
+        return cacsukien;
+    }
+
+    public ArrayList<DiTich> getCacditich() {
+        return cacditich;
+    }
 }
