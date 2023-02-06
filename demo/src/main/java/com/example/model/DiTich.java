@@ -37,12 +37,7 @@ public class DiTich extends General {
         this.namcongnhan = namcongnhan;
     }
 
-    public void print() {
-        System.out.println("Di tich: "+this.getTen());
-        System.out.println("Dia diem: "+this.getDiadiem());
-        System.out.println("Nam cong nhan: "+this.getNamcongnhan());
-        System.out.println("Loai di tich: "+this.getLoaiditich());
-    }
+
 
     public DiTich() {
     }

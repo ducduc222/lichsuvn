@@ -50,11 +50,4 @@ public class Vua extends General {
         this.cha = cha;
     }
 
-    @Override
-    public void print() {
-        System.out.println("ngaysinh: "+this.getNgaysinh());
-        System.out.println("ngaymat: "+this.getNgaymat());
-        System.out.println("lenngoi: "+this.getNgaylenngoi());
-        System.out.println("cha: "+this.getCha());
-    }
 }

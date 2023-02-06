@@ -1,6 +1,6 @@
 package com.example.model;
 
-public class General implements IGeneral{
+public class General{
     private String ten;
 
     public void setTen(String ten) {
@@ -15,8 +15,5 @@ public class General implements IGeneral{
     }
     public General(String ten){
         this.ten = ten;
-    }
-    public void print(){
-        System.out.println("Tên: "+this.getTen());
     }
 }

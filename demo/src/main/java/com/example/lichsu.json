@@ -561,13 +561,6 @@
       "ten": "Trùng Quang Đế"
     },
     {
-      "ngaysinh": "?",
-      "ngaymat": "1428",
-      "ngaylenngoi": "1426 - 1428",
-      "cha": "",
-      "ten": "Trần Cảo"
-    },
-    {
       "ngaysinh": "10 tháng 9, 1385 Lam Sơn, Thanh Hóa",
       "ngaymat": "5 tháng 10, 1433(1433-10-05) (48 tuổi) Đông Kinh, Đại Việt",
       "ngaylenngoi": "29 tháng 4 năm 1428 – 5 tháng 10 năm 1433 (5 năm, 159 ngày)",
@@ -741,20 +734,6 @@
       "ngaylenngoi": "?",
       "cha": "Mạc Kính Khoan",
       "ten": "Mạc Kính Vũ"
-    },
-    {
-      "ngaysinh": "?",
-      "ngaymat": "?",
-      "ngaylenngoi": "?",
-      "cha": "Mạc Kính Vũ",
-      "ten": "Mạc Nguyên Thanh"
-    },
-    {
-      "ngaysinh": "?",
-      "ngaymat": "1683",
-      "ngaylenngoi": "?",
-      "cha": "",
-      "ten": "Mạc Kính Quang"
     },
     {
       "ngaysinh": "1515",
@@ -2840,13 +2819,7 @@
           "cha": "Trang Định vương Trần Ngạc",
           "ten": "Trùng Quang Đế"
         },
-        {
-          "ngaysinh": "?",
-          "ngaymat": "1428",
-          "ngaylenngoi": "1426 - 1428",
-          "cha": "",
-          "ten": "Trần Cảo"
-        }
+        null
       ],
       "ten": "Nhà Hậu Trần"
     },
@@ -3032,20 +3005,7 @@
           "cha": "Mạc Kính Khoan",
           "ten": "Mạc Kính Vũ"
         },
-        {
-          "ngaysinh": "?",
-          "ngaymat": "?",
-          "ngaylenngoi": "?",
-          "cha": "Mạc Kính Vũ",
-          "ten": "Mạc Nguyên Thanh"
-        },
-        {
-          "ngaysinh": "?",
-          "ngaymat": "1683",
-          "ngaylenngoi": "?",
-          "cha": "",
-          "ten": "Mạc Kính Quang"
-        }
+        null
       ],
       "ten": "Nhà Mạc"
     },

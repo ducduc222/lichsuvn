@@ -15,12 +15,7 @@ public class TrieuDai extends General {
         return true;
     }
 
-    @Override
-    public void print() {
-        for (Vua vua : cacVua) {
-            System.out.println(vua.getTen());
-        }
-    }
+
 
     public ArrayList<Vua> getCacVua() {
         return cacVua;

@@ -36,6 +36,7 @@ public class ScraperVua {
                 String cha = doc1.select("th:contains(Thân phụ) +td").text();
                 Vua vua = new Vua(name, ngaysinh, ngaymat, ngaylenngoi, cha);
                 listLichSu.addGeneral(vua);
+                System.out.println(vua.getTen());
                 MapClass.setMap(linkVua, vua);
                 } catch (Exception e) {
 

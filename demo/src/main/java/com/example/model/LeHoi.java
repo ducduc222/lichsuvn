@@ -53,32 +53,6 @@ public class LeHoi extends General {
         this.diadiem = diadiem;
         this.ngaytochuc = ngaytochuc;
     }
-
-    public void print() {
-        System.out.println("ten le hoi: " + getTen());
-        System.out.println("dia diem: " + getDiadiem());
-        System.out.println("ngay to chuc: " + getNgaytochuc());
-        System.out.print("nhan vat lien quan: ");
-
-        if (!cacvua.isEmpty())
-            for (Vua vua:cacvua) {
-                System.out.print(vua.getTen() + ", ");
-            }
-
-        System.out.print("\ndi tich lien quan: ");
-        if (!cacditich.isEmpty())
-            for (DiTich diTich:cacditich) {
-                System.out.print(diTich.getTen() + ", ");
-            }
-
-        System.out.print("\nsu kien lien quan: ");
-        if (!cacsukien.isEmpty())
-            for (SuKien suKien:cacsukien) {
-                System.out.print(suKien.getTen() + ", ");
-            }
-        System.out.print("\n\n");
-    }
-
     public LeHoi() {
         Vua vua = new Vua();
         SuKien suKien = new SuKien();
@@ -88,4 +62,11 @@ public class LeHoi extends General {
         this.addSuKien(suKien);
     }
 
+    public ArrayList<SuKien> getCacsukien() {
+        return cacsukien;
+    }
+
+    public ArrayList<DiTich> getCacditich() {
+        return cacditich;
+    }
 }
